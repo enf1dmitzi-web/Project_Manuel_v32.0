@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Manuel</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * { box-sizing: border-box; }
+        html, body {
+            background-color: #000000;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            position: relative;
+        }
+        #matrixBg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            opacity: 0.25;
+        }
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .progress-container {
+            margin: 25px 0 35px 0;
+        }
+        .progress-label {
+            color: #0f0;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            text-shadow: 0 0 6px #0f0;
+        }
+        .progress-bar-bg {
+            width: 100%;
+            background: #111;
+            border: 1px solid #0f0;
+            border-radius: 4px;
+            overflow: hidden;
+            height: 22px;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0a0, #0f0);
+            box-shadow: 0 0 10px #0f0;
+            transition: width 0.6s ease;
+        }
+        .commit-card {
+            display: block;
+            border: 1px solid #333;
+            border-left: 4px solid #666;
+            background: #0a0a0a;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            text-decoration: none;
+            color: #cfcfcf;
+            transition: all 0.2s ease;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        .commit-card.revealed {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.4s ease, transform 0.4s ease, background 0.2s ease, border-color 0.2s ease;
+        }
+        .commit-card.done {
+            border-left-color: #0f0;
+        }
+        .commit-card.progress {
+            border-left-color: #fa0;
+        }
+        .commit-card:hover, .commit-card:active {
+            background: #151515;
+            border-color: #0f0;
+            box-shadow: 0 0 10px rgba(0,255,0,0.3);
+            transform: translateX(3px);
+        }
+        .commit-title {
+            color: #4da6ff;
+            font-size: 0.95em;
+        }
+        .commit-status {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="matrixBg"></canvas>
+
+<div class="wrapper">
+
+<div class="terminal">
+<h1>Project_Manuel_v32.0</h1>
+
+<h2>Commit History</h2>
+
+<div class="progress-container">
+    <div class="progress-label" id="progressLabel">0 / 32 commits</div>
+    <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width: 0%;"></div>
+    </div>
+</div>
+
+<div class="commit-list" id="commitList">
+<a href="commits/0001.html" class="commit-card done"><span class="commit-status">🟢</span><span class="commit-title">Commit 0001 — Initial Connection</span></a>
+<a href="commits/0002_corregido.html" class="commit-card done"><span class="commit-status">🟢</span><span class="commit-title">Commit 0002 — New shared activity unlocked</span></a>
+<a href="commits/0003.html" class="commit-card done"><span class="commit-status">🟢</span><span class="commit-title">Commit 0003 — Friendship built through ordinary moments</span></a>
+<a href="commits/0004.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0004 — First full-day adventure completed</span></a>
+<a href="commits/0005.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0005 — Spontaneous night adventure archived</span></a>
+<a href="commits/0006.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0006 — First long-distance trip completed</span></a>
+<a href="commits/0007.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0007 — Friendship reached a turning point</span></a>
+<a href="commits/0008.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0008 — Trust reached a new level</span></a>
+<a href="commits/0009.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0009 — Postponed plans finally executed</span></a>
+<a href="commits/0010.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0010 — Ordinary moments became unforgettable</span></a>
+<a href="commits/0011.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0011 — First weekend together completed</span></a>
+<a href="commits/0012.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0012 — Another ordinary night successfully archived</span></a>
+<a href="commits/0013.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0013 — First planned day together completed</span></a>
+<a href="commits/0014.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0014 — Another adventure together completed</span></a>
+<a href="commits/0015.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0015 — Favorite place successfully shared</span></a>
+<a href="commits/0016.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0016 — First trip to Puebla completed</span></a>
+<a href="commits/0017.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0017 — Distance quietly came to an end</span></a>
+<a href="commits/0018.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0018 — Stepped out of our routine</span></a>
+<a href="commits/0019.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0019 — Bowling night with the crew</span></a>
+<a href="commits/0020.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0020 — Closing a chapter</span></a>
+<a href="commits/0021.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0021 — Unexpected reunion unlocked</span></a>
+<a href="commits/0022.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0022 — Break the routine and explore new experiences</span></a>
+<a href="commits/0023.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0023 — First Mexico match archived</span></a>
+<a href="commits/0024.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0024 — Simple moments became meaningful</span></a>
+<a href="commits/0025.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0025 — Second Mexico match together</span></a>
+<a href="commits/0026.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0026 — Matching outfits detected</span></a>
+<a href="commits/0027.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0027 — Third Mexico match together</span></a>
+<a href="commits/0028.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0028 — Final match night together</span></a>
+<a href="commits/0029.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0029 — Mezcal fair and karaoke night</span></a>
+<a href="commits/0030.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0030 — First outing as a party of four</span></a>
+<a href="commits/0031.html" class="commit-card progress"><span class="commit-status">🟡</span><span class="commit-title">Commit 0031 — Birthday celebration with Leti</span></a>
+<a href="commits/0032.html" class="commit-card done"><span class="commit-status">🟢</span><span class="commit-title">Commit 0032 — Nosotros</span></a>
+</div>
+
+<br>
+<a href="bienvenida.html" style="color:#4da6ff; text-decoration:none;">⬅ Volver al inicio</a>
+
+</div>
+
+<script>
+const canvas = document.getElementById('matrixBg');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "01アイウエオカキクケコサシスセソタチツテト";
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+const drops = Array(Math.floor(columns)).fill(1);
+
+function draw() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.06)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#0f0";
+    ctx.font = fontSize + "px monospace";
+    for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
+            drops[i] = 0;
+        }
+        drops[i]++;
+    }
+}
+
+setInterval(draw, 60);
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+const totalCommits = 32;
+const cards = document.querySelectorAll('#commitList .commit-card');
+const progressLabel = document.getElementById('progressLabel');
+const progressFill = document.getElementById('progressFill');
+let revealedCount = 0;
+
+function revealNext(index) {
+    if (index >= cards.length) {
+        progressLabel.textContent = totalCommits + " / " + totalCommits + " commits — Completado 🎉";
+        return;
+    }
+    cards[index].classList.add('revealed');
+    revealedCount++;
+    const percent = (revealedCount / totalCommits) * 100;
+    progressFill.style.width = percent + "%";
+    progressLabel.textContent = revealedCount + " / " + totalCommits + " commits";
+    setTimeout(() => revealNext(index + 1), 220);
+}
+
+if (sessionStorage.getItem('commitsRevealed') === 'true') {
+    cards.forEach(card => card.classList.add('revealed'));
+    progressFill.style.width = "100%";
+    progressLabel.textContent = totalCommits + " / " + totalCommits + " commits — Completado 🎉";
+} else {
+    revealNext(0);
+    sessionStorage.setItem('commitsRevealed', 'true');
+}
+</script>
+
+</body>
+</html>
